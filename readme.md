@@ -1,73 +1,124 @@
-🔗 URL Shortener
+🔗 URL Shortener Web Application
 
-A simple URL Shortener web application built using Python, Flask, and MySQL. This project converts long URLs into short URLs and redirects users to the original website. It also tracks how many times each short URL has been accessed.
+A simple and efficient URL Shortener web application built using Python Flask and MySQL. The application converts long URLs into short, easy-to-share links and redirects users to the original URL when accessed.
 
-🚀 Features
+The project was initially developed using a local MySQL database and later enhanced by integrating a cloud-based MySQL database (Railway) and deploying the application on Render.
+
+🚀 Live Demo
+
+🌐 Application:
+https://url-shortener-ttha.onrender.com
+
+📌 Features
 
 - Convert long URLs into short URLs
-- Redirect users to the original website
-- Prevent duplicate URLs
-- Track click count
-- Store URL data in MySQL
-- Simple and responsive user interface
+- Redirect short URLs to the original URL
+- Store URL mappings in MySQL database
+- Track the number of clicks for each shortened URL
+- Prevent duplicate short URLs for the same long URL
+- Cloud database integration
+- Deployed live using Render
 
-🛠️ Technologies Used
+🛠️ Tech Stack
+
+Backend
 
 - Python
 - Flask
+
+Database
+
 - MySQL
-- HTML
-- CSS
-- SHA-256
-- Base64
-- python-dotenv
+- Railway Cloud MySQL
 
-📂 Database
+Deployment & Tools
 
-Database Name: "url_shortener"
+- Render (Web Deployment)
+- Git & GitHub
+- Environment Variables (.env)
 
-Table Name: "url_mapping"
-
-Column| Description
-id| Unique ID
-long_url| Original URL
-short_url| Generated short URL
-clicks| Number of times the short URL was opened
-created_at| Date and time the URL was created
-
-📌 Project Workflow
+🏗️ Project Workflow
 
 1. User enters a long URL.
-2. Flask receives the request.
-3. Python checks whether the URL already exists.
-4. If it exists, the existing short URL is returned.
-5. Otherwise, a new short URL is generated using SHA-256 and Base64.
-6. The URL is stored in the MySQL database.
-7. The short URL is displayed.
-8. When the short URL is opened, the click count is updated and the user is redirected to the original URL.
+2. Flask application generates a unique short URL using:
+   - SHA256 hashing
+   - Base64 encoding
+3. URL mapping is stored in the MySQL database.
+4. When the short URL is opened:
+   - The original URL is retrieved.
+   - User is redirected to the destination URL.
+   - Click count is updated.
 
-▶️ How to Run
+📂 Project Structure
 
-1. Clone the repository.
-2. Create and activate a virtual environment.
-3. Install the required packages:
-   - Flask
-   - mysql-connector-python
-   - python-dotenv
-4. Create the MySQL database and table.
-5. Add your MySQL password to the ".env" file.
-6. Run:
+url-shortener/
+│
+├── app.py              # Flask application
+├── database.py         # Database configuration
+├── requirements.txt    # Python dependencies
+├── templates/
+│   └── index.html      # Frontend page
+│
+├── static/
+│   └── style files
+│
+└── README.md
+
+⚙️ Local Setup Instructions
+
+1. Clone the repository
+
+git clone https://github.com/jhayjanani/url-shortener.git
+
+2. Create virtual environment
+
+python -m venv venv
+
+3. Activate virtual environment
+
+Windows:
+
+venv\Scripts\activate
+
+4. Install dependencies
+
+pip install -r requirements.txt
+
+5. Configure Environment Variables
+
+Create a ".env" file:
+
+DB_HOST=your_database_host
+DB_USER=your_database_user
+DB_PASSWORD=your_database_password
+DB_NAME=your_database_name
+DB_PORT=your_database_port
+
+6. Run the application
 
 python app.py
 
-7. Open your browser and visit:
+Open:
 
-http://127.0.0.1:5000/
+http://127.0.0.1:5000
 
-📸 Output
+☁️ Deployment
 
-- Generate a short URL from a long URL.
-- Redirect to the original website.
-- Track the number of clicks for each short URL.
+The application is deployed using:
 
+- Railway → Cloud MySQL Database
+- Render → Flask Web Application Hosting
+
+Environment variables were configured in Render for secure database connectivity.
+
+📚 Learning Outcomes
+
+Through this project, I gained practical experience in:
+
+- Building web applications using Flask
+- Connecting backend applications with databases
+- Managing cloud databases
+- Using environment variables for security
+- Deploying applications to cloud platforms
+- Working with Git and GitHub workflows
 
