@@ -20,7 +20,7 @@ connection = mysql.connector.connect(
     port=int(os.getenv("DB_PORT", 3306))
 )
 
-cursor = connection.cursor(buffered=True)
+
 
 cursor = connection.cursor(buffered=True)
 
@@ -100,6 +100,5 @@ def redirect_url(short_url):
 
     return "<h2>404 - Short URL Not Found</h2>"
 
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
